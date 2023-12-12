@@ -1,0 +1,109 @@
+<!-- frontend/pages/bookGas.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style.css" />
+  <title>Book Room</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body id="bookHotelPage">
+  <div class="container hotelBookingContainer mt-5">
+    <div class="hotelBooking-form" style="width: 70%;">
+      <form id="hotelBooking-form">
+        <div class="row">
+          <div class="col-md-9">
+            <h2 style="color: black">Book Hotel</h2>
+            <div class="row">
+              <div class="col-3">
+                <h5 class="mt-2">Select Booking Date :</h5>
+              </div>
+              <div class="col-md-4">
+                <input id="bookingDate" name="date" type="date" class="form-control" placeholder="Booking Date" oninput="validateDate()">
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-3">
+            <button id="logout" class="btn btn btn-info" type="button">
+              Logout
+            </button>
+          </div>
+          <div class="col-md-12 mt-2" id="hotelOptions" style="display: none;">
+            <div class="row">
+              <div class="col">
+                <label for="days">Number Of Days: </label>
+                <input type="number" name="days" id="days">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4 p-2">
+                <div width="500px" id="room1" alt=""  >
+
+                </div>
+                <h3 class="mt-2" style="font-size: 20px;">Standard Room - $100</h3>
+                <button type="submit" class="btn btn-lg btn-info bookHotelBtn mt-2" id="standardRoomBtn">Book
+                  Hotel</button>
+              </div>
+              <div class="col-4 p-2">
+                <div width="500px" id="room2" alt="" style="border: 1px solid #8f8f8f; border-radius: 15px" >
+
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <h3 class="mt-2" style="font-size: 20px;">Deluxe Room - $150</h3>
+                    <button class="btn btn-lg btn-info bookHotelBtn mt-2" id="deluxeRoomBtn">Book Hotel</button>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-4 p-2">
+                <div width="500px" id="room3" alt="" style="border: 1px solid #8f8f8f; border-radius: 15px; display: block;" >
+
+                </div>
+                <h3 class="mt-2" style="font-size: 20px;">Suite - $200</h3>
+                <button class="btn btn-lg btn-info bookHotelBtn  mt-2" id="suiteRoomBtn">Book Hotel</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <p id="errorMessage"></p>
+
+      </form>
+      <button class="btn btn-info" style="font-size: 22px; margin-bottom: 2%; margin-left: 2%;" id="viewAllBooking">
+        View Bookings
+      </button>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+    <script>
+      function validateDate() {
+        var currentDate = new Date();
+
+        var selectedDate = new Date(document.getElementById('bookingDate').value);
+    
+        if (selectedDate < currentDate) {
+          alert("Please select a future or current date.");
+          document.getElementById('bookingDate').value = formatDate(currentDate);
+        }
+      }
+    
+      function formatDate(date) {
+        var year = date.getFullYear();
+        var month = ('0' + (date.getMonth() + 1)).slice(-2);
+        var day = ('0' + date.getDate()).slice(-2);
+        return year + '-' + month + '-' + day;
+      }
+    </script>
+  <script src="./main.js"></script>
+</body>
+
+</html>
